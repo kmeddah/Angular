@@ -1,0 +1,20 @@
+<nav class="navbar bg-dark text-white">
+  <h1>Ma Liste</h1>
+</nav>
+
+ <div class="container">
+
+  <br>
+
+  <input type="text" class="form-control" 
+  [(ngModel)]="userText"
+  (keydown.enter)="userText && addToListe()">
+  <button class="btn btn-primary" (click)="addToListe()" [disabled]="!userText">
+    Ajouter
+  </button>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let item of liste">{{item}}</li>
+  </ul>
+
+ </div>
