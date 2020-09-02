@@ -4,10 +4,10 @@ import { UserModule } from '../user/user.module';
 import { ChatModule } from '../chat/chat.module';
 import { ShopModule } from '../shop/shop.module';
 import { SportModule } from '../sport/sport.module';
+import { SharedModule } from '../shared/shared.module';
 import { ScreenHomeComponent } from './screen-home/screen-home.component';
 import { ScreenChatComponent } from './screen-chat/screen-chat.component';
 import { ScreenShopComponent } from './screen-shop/screen-shop.component';
-
 
 
 @NgModule({
@@ -17,7 +17,8 @@ import { ScreenShopComponent } from './screen-shop/screen-shop.component';
     UserModule,
     ChatModule,
     ShopModule,
-    SportModule
+    SportModule,
+    SharedModule
   ],
   exports: [ScreenHomeComponent, ScreenChatComponent, ScreenShopComponent]
 })
