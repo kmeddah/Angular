@@ -1,0 +1,35 @@
+{
+  "messages": [],
+  "users": [
+    {
+      "id": 1,
+      "username": "Pascal",
+      "password": "orsys",
+      "avatar": "http://robohash.org/psacal"
+    },
+    {
+      "id": 1,
+      "username": "Khaled",
+      "password": "orsys",
+      "avatar": "http://robohash.org/khaled"
+    },
+    {
+      "id": 1,
+      "username": "Mickael",
+      "password": "orsys",
+      "avatar": "http://robohash.org/mickael"
+    },
+    {
+      "id": 1,
+      "username": "Daniel",
+      "password": "orsys",
+      "avatar": "http://robohash.org/daniel"
+    },
+    {
+      "id": 1,
+      "username": "Renaud",
+      "password": "orsys",
+      "avatar": "http://robohash.org/renaud"
+    }
+  ]
+}
