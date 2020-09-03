@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, BehaviorSubject } from 'rxjs';
 import { User } from './user';
 import { Message } from './message';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,9 @@ export class ChatService {
   userList$ = new BehaviorSubject<User[]>([]);
   messages$ = new BehaviorSubject<Message[]>([]);
 
-  constructor() { }
+  constructor(
+    private httpClient: HttpClient
+  ) { }
 
   connectUser(
     user: Pick<User, 'username' | 'password'>
@@ -24,13 +27,9 @@ export class ChatService {
   }
 
   getUserList(): void {
-    this.userList$.next([
-      {id:1,username:'Pascal',password:'orsys',avatar:'http://robohash.org/psacal'},
-      {id:1,username:'Khaled',password:'orsys',avatar:'http://robohash.org/khaled'},
-      {id:1,username:'Mickael',password:'orsys',avatar:'http://robohash.org/mickael'},
-      {id:1,username:'Daniel',password:'orsys',avatar:'http://robohash.org/daniel'},
-      {id:1,username:'Renaud',password:'orsys',avatar:'http://robohash.org/renaud'}
-    ])
+    this.httpClient.get<User[]>('http://localhost:5050/users').subscribe(
+      data => this.userList$.next(data)
+    );
   }
 
   getMessages(): void { }
