@@ -8,10 +8,12 @@ import { ChatService } from 'src/app/services/chat.service';
 })
 export class ScreenChatComponent {
 
-constructor(
-  private chatService:ChatService
-) {
-  this.chatService.getUserList();
-}
+  constructor(
+    private chatService:ChatService
+  ){
+
+    setTimeout( ()=>  this.chatService.getUserList(), 5000)
+
+  }
 
 }

@@ -13,9 +13,9 @@ export class UserListComponent {
   ) {
 
 
-    // this.chatService.userList$.subscribe(
-    //   data => console.table(data)
-    // )
+    /* this.chatService.userList$.subscribe(
+      data => console.table(data)
+    ) */
   }
 
 
