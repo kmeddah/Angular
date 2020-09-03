@@ -17,6 +17,11 @@ const routes: Routes = [
     path:'shop',
     component:ScreenShopComponent
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({

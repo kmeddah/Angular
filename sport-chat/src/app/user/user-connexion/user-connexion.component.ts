@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-user-connexion',
@@ -12,6 +12,8 @@ export class UserConnexionComponent implements OnInit {
     password:'Password'
   };
 
+  @Output() userConnection = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class UserConnexionComponent implements OnInit {
 
   requestConnection(){
     console.log(this.user);
+    this.userConnection.emit(this.user);
   }
 
 }

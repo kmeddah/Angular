@@ -5,19 +5,20 @@ import { ShopListComponent } from './shop-list/shop-list.component';
 import { ShopTitleComponent } from './shop-title/shop-title.component';
 import { ShopComponent } from './shop/shop.component';
 import { ShopButtonComponent } from './shop-button/shop-button.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    ShopProductComponent, 
-    ShopListComponent, 
-    ShopTitleComponent, 
-    ShopComponent, 
+    ShopProductComponent,
+    ShopListComponent,
+    ShopTitleComponent,
+    ShopComponent,
     ShopButtonComponent
   ],
   imports: [
-    CommonModule
+    CommonModule, SharedModule
   ],
   exports: [ShopComponent, ShopButtonComponent]
 })
