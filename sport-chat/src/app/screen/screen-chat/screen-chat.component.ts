@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './screen-chat.component.html',
   styleUrls: ['./screen-chat.component.css']
 })
-export class ScreenChatComponent implements OnInit {
+export class ScreenChatComponent {
 
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

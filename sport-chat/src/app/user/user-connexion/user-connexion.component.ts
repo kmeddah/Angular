@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user-connexion',
@@ -8,8 +8,8 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 export class UserConnexionComponent implements OnInit {
 
   public user = {
-    name:'Name',
-    password:'Password'
+    name: 'Name',
+    password: 'Password'
   };
 
   @Output() userConnection = new EventEmitter();
@@ -20,8 +20,9 @@ export class UserConnexionComponent implements OnInit {
   }
 
 
-  requestConnection(){
+  requestConnection() {
     console.log(this.user);
+    //Connection OK
     this.userConnection.emit(this.user);
   }
 

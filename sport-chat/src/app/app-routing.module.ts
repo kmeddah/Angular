@@ -4,6 +4,8 @@ import { ScreenHomeComponent } from './screen/screen-home/screen-home.component'
 import { ScreenChatComponent } from './screen/screen-chat/screen-chat.component';
 import { ScreenShopComponent } from './screen/screen-shop/screen-shop.component';
 
+import { ChatGuard } from './services/chat.guard';
+
 const routes: Routes = [
   {
     path:'home',
@@ -11,16 +13,18 @@ const routes: Routes = [
   },
   {
     path:'chat',
-    component:ScreenChatComponent
+    component:ScreenChatComponent,
+    canActivate:[ChatGuard]
   },
   {
     path:'shop',
-    component:ScreenShopComponent
+    component:ScreenShopComponent,
+    canActivate:[ChatGuard]
   },
   {
-    path: '**',
-    redirectTo: 'home',
-    pathMatch: 'full'
+    path:'**',
+    redirectTo:'home',
+    pathMatch:'full'
   }
 ];
 

@@ -18,7 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     ShopButtonComponent
   ],
   imports: [
-    CommonModule, SharedModule
+    SharedModule
   ],
   exports: [ShopComponent, ShopButtonComponent]
 })

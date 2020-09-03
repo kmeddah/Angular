@@ -10,10 +10,13 @@ export class ScreenHomeComponent {
 
   title = "HOME";
 
-  constructor(private router:Router){}
+  constructor(
+    // @Inject(Router) private router:Router
+    private router:Router
+  ){}
 
-  userConnectionHandler(user:any) {
-    console.table(user);
+  userConnectionHandler(user:any){
+    // console.table(user);
     this.router.navigate(['chat']);
   }
 
