@@ -8,4 +8,12 @@ export class ChatService {
   currentUser = null;
 
   constructor() { }
+
+  connectUser() {}
+
+  getUserList() {}
+
+  getMessages(){}
+
+  sendMessages() {}
 }
