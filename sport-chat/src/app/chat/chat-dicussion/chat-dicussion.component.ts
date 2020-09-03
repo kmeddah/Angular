@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChatService } from 'src/app/services/chat.service';
 
 @Component({
   selector: 'app-chat-dicussion',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatDicussionComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public chatService: ChatService
+  ) {
+    setInterval(() => this.chatService.getMessages(), 1000)
+  }
 
   ngOnInit(): void {
+  }
+
+  displayMessage() {
+
   }
 
 }

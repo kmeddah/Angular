@@ -5,6 +5,8 @@ import { Message } from './message';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
+import { catchError } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,9 +38,27 @@ export class ChatService {
 
   }
 
-  getMessages(): void { }
+  getMessages(): void {
+    this.httpClient.get<Message[]>(environment.API_MESSAGES)
+      .subscribe(
+        data => this.messages$.next(data)
+      )
+  }
 
-  sendMessage(author: User, text: string): void { }
+  sendMessage(author: User, text: string): void {
+    this.httpClient.post(environment.API_MESSAGES, {
+      author,
+      text
+    })
+      .pipe(
+        catchError(error => {
+          console.log(error);
+          return of(error);
+        })
+      ).subscribe(
+        console.warn
+      );
+  }
 
   refresh(): void {
     this.getUserList();

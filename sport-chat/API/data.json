@@ -1,5 +1,16 @@
 {
-  "messages": [],
+  "messages": [
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "Coucou",
+      "id": 1
+    }
+  ],
   "users": [
     {
       "id": 1,
@@ -24,7 +35,6 @@
       "username": "Daniel",
       "password": "orsys",
       "avatar": "http://robohash.org/daniel"
-
     },
     {
       "id": 1,
