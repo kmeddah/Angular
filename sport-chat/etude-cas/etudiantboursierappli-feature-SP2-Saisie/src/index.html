@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <base href="/">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="OWNER" content="CNAF" />
+    <meta name="AUTHOR" content="CNAF" />
+
+    <title>CAF - DEV</title>
+
+    <!--Import ICF -->
+    <link href="icfstatiquesangularappli/dist/fonts-cnaf/roboto_cnaf.css" rel="stylesheet">
+    <link href="icfstatiquesangularappli/dist/StatiquesCaffr/css/bootstrap.css" rel="stylesheet">
+    <link href="icfstatiquesangularappli/dist/StatiquesCaffr/css/bootstrap-theme.css" rel="stylesheet">
+    <link href="icfstatiquesangularappli/dist/StatiquesCaffr/contraste/css/bootstrap.css" rel="stylesheet">
+    <link href="icfstatiquesangularappli/dist/StatiquesCaffr/contraste/css/bootstrap-theme.css" rel="stylesheet">
+    <script src="icfstatiquesangularappli/dist/angular/smarttag-test.js"></script>
+    <script src="icfstatiquesangularappli/dist/jquery/1.11.2/jquery.min.js"></script>
+    <script src="icfstatiquesangularappli/dist/StatiquesCaffr/js/bootstrap.min.js"></script>
+    <script src="icfstatiquesangularappli/dist/StatiquesCaffr/js/headerCnaf.min.js"></script>
+
+</head>
+<!-- FIN HEAD -->
+<!-- DEBUT BODY -->
+
+<body role="document">
+    <script>
+        //MAJ de la variable cnafUrlMaintienSession en dev pour ne pas avoir un 404
+        cnafUrlMaintienSession = "";
+
+        //Initialisation de la liste GROUPE_ALLOCATAIRE
+        var GROUPE_ALLOCATAIRE = {
+            GROUP_ALLOCATAIRES_DTRSA: 'allocatairesdtrsa',
+            GROUP_ALLOCATAIRES_DPN: 'allocatairesdpn',
+            GROUP_ALLOCATAIRES_RSAPA_24_DERNIERS_MOIS: 'allocatairesrsapa24derniersmois',
+            GROUP_ALLOCATAIRES_AL: 'allocatairesal',
+            GROUP_ALLOCATAIRES_LOCATION_AL: 'allocataireslocational',
+            GROUP_ALLOCATAIRES_MAYOTTE: 'allocatairesmayotte',
+            GROUP_ALLOCATAIRES_EXPERIMENTATION_RMS: 'allocatairesexperimentationrms',
+            GROUP_ALLOCATAIRES_ACCESSION_AL: 'allocatairesaccessional',
+            GROUP_ALLOCATAIRES_SUSPENSION_DOSSIER: 'allocatairessuspensiondossier',
+            GROUP_ALLOCATAIRES_DRABS_ANNEEMOINS1_TTPERS: 'allocatairesdrabsnmoins1toutespers',
+            GROUP_ALLOCATAIRES_EXPERIMENTATION: 'allocatairesexperimentation',
+            GROUP_ALLOCATAIRES_LOCATION_AL_SEUL: 'allocataireslocationalseul',
+            GROUP_ALLOCATAIRES_DOM: 'allocatairesdom',
+            GROUP_ALLOCATAIRES_EXPERIMENTATION_FORMULAIRE: 'allocatairesexperimentationformulaire',
+            GROUP_ALLOCATAIRES_AL_SEUL: 'allocatairesalseul',
+            GROUP_ALLOCATAIRES_DTRPA: 'allocatairesdtrpa',
+            GROUP_ALLOCATAIRES_EXPERIMENTATION_AGENDA: 'allocatairesexperimentationagenda',
+            GROUP_ALLOCATAIRES_DSIT_BLOQUEE: 'allocatairesdsitbloquee',
+            GROUP_ALLOCATAIRES_AFFICHER_RESSOURCES: 'allocatairesafficherressources',
+            GROUP_ALLOCATAIRES_ETU_MAINTIEN_LOG: 'allocatairesetumaintienlog',
+            GROUP_ALLOCATAIRES_SIMULATION: 'allocatairessimulation',
+            GROUP_ALLOCATAIRES_EXPERIMENTATION_DELAIS_TRAITEMENT: 'allocatairesexperimentationdelaistraitement',
+            GROUP_ALLOCATAIRES_RADIES: 'allocatairesradies',
+            GROUP_ALLOCATAIRES_INSTITUTIONNEL: 'allocatairesinstitutionnel',
+            GROUP_ALLOCATAIRES_ENCOURS_AFFILIATION: 'allocatairesafc',
+            GROUP_ALLOCATAIRES_PATRIMOINE: 'allocatairespatrimoine',
+            GROUP_ALLOCATAIRES_DRABS_ANNEEMOINS2_TTPERS: 'allocatairesdrabsnmoins2toutespers',
+            GROUP_ALLOCATAIRES: 'allocataires',
+            GROUP_ALLOCATAIRES_EBO: 'allocatairesebo',
+            GROUP_ALLOCATAIRES_REMBOURSEMENTS: 'allocatairesremboursements',
+            GROUP_ALLOCATAIRES_RID: 'allocatairesrecueilinformation',
+            GROUP_ALLOCATAIRES_NEO_PRIMO: 'allocatairesneoprimo',
+            GROUP_ALLOCATAIRES_LOCATION_APL_SEUL: 'allocataireslocationaplseul',
+            GROUP_ALLOCATAIRES_DR: 'allocatairesdr',
+            GROUP_ALLOCATAIRES_CAFMIGREEMDP: 'allocatairescafmigreemdp',
+            GROUP_ALLOCATAIRES_DR_ANNEE_MOINS_2: 'allocatairesdranneemoins2',
+            GROUP_ALLOCATAIRES_AAHPA: 'allocatairesaahpa',
+            GROUP_ALLOCATAIRES_TUTELLE48: 'allocatairestutelle48',
+            GROUP_ALLOCATAIRES_DRABS_ANNEEMOINS2_ALLOCCJT: 'allocatairesdrabsnmoins2alloccjt',
+            GROUP_ALLOCATAIRES_AFFILIES: 'allocatairesaff',
+            GROUP_ALLOCATAIRES_ETUDIANT_UNIV: 'allocatairesetudiantuniv',
+            GROUP_ALLOCATAIRES_DRABS_ANNEEMOINS1_ALLOCCJT: 'allocatairesdrabsnmoins1alloccjt',
+            GROUP_ALLOCATAIRES_PAJEMPLOI: 'allocatairespajeemploi',
+            GROUP_ALLOCATAIRES_ETUDIANT: 'allocatairesetudiant',
+            GROUP_ALLOCATAIRES_ACCESSION_AL_SEUL: 'allocatairesaccessionalseul',
+            GROUP_ALLOCATAIRES_AAH: 'allocatairesaah',
+            GROUP_ALLOCATAIRES_CMAF: 'allocatairescmaf',
+            GROUP_ALLOCATAIRES_AAH_24_DERNIERS_MOIS: 'allocatairesaah24derniersmois',
+            GROUP_ALLOCATAIRES_APL_SEUL: 'allocatairesaplseul',
+            GROUP_ALLOCATAIRES_ACCESSION_APL_SEUL: 'allocatairesaccessionaplseul'
+         };
+
+        cnafUrlMaintienSession = "";
+
+        // -----------------------------------------------
+        // ---- Paramètre application angular ------------
+        // -----------------------------------------------
+        //Valeur par défaut
+        var mapForAngularAppli = {};
+        // AppConfig
+        mapForAngularAppli.appConfig = {};
+        // mapForAngularAppli.appConfig.tokenTimeValidity=15;
+        mapForAngularAppli.appConfig.urlServletJWT = "";
+        // mapForAngularAppli.appConfig.tokenJWT="";
+
+        // UserConfig
+        mapForAngularAppli.userConfig = {
+            'codeOrga': '456',
+            'matricule': '46',
+            'dateEnvCaffr': 'dateenv',
+            'listGroups': ['allocatairesal'],
+            'CNAF_LIST_GROUP': GROUPE_ALLOCATAIRE
+        };
+
+        //Récupération des valeurs sauvegardé dans le localStorage
+        $('[data-toggle="tooltip"]').tooltip();
+
+        var displayAngular = localStorage.getItem("displayAngular");
+
+        var codeOrga = localStorage.getItem("codeOrga");
+        mapForAngularAppli.userConfig.codeOrga = codeOrga;
+
+        var matricule = localStorage.getItem("matricule");
+        mapForAngularAppli.userConfig.matricule = matricule;
+
+        var dateEnv = localStorage.getItem("dateEnv");
+        mapForAngularAppli.userConfig.dateEnvCaffr = dateEnv;
+        //Init date du champs date avec la date du jour
+
+
+        var groupeAllocataireSauvegarde = localStorage.getItem("groupeAllocataire");
+        mapForAngularAppli.userConfig.listGroups = groupeAllocataireSauvegarde;
+
+        mapForAngularAppli.appConfig.urlServletJWT = createUrlJwt(mapForAngularAppli);
+
+
+        $(document).ready(function () {
+
+            if (displayAngular === "true") {
+                $('#divAngular').show();
+                // Appel fonctions du thème
+                setTimeout(function(){
+                  pageReady();
+                  pageReadyForTheme();
+                },2000);
+            }
+            else {
+                // Pré-affichage des valeurs
+                $('#codeOrga').val(codeOrga);
+                $('#matricule').val(matricule);
+                if (dateEnv != "") {
+                    var ajd = new Date();
+                    var jour = ("0" + ajd.getDate()).slice(-2);
+                    var mois = ("0" + (ajd.getMonth() + 1)).slice(-2);
+                    var annee = ajd.getFullYear();
+                    $('#dateEnv').val(annee + "" + mois + "" + jour);
+                }
+                var selectGroupeAllocataire = $("#groupeAllocataire");
+                $.each(GROUPE_ALLOCATAIRE, function (indice, valeur) {
+                    selectGroupeAllocataire.append($("<option />").val(valeur).text(valeur));
+                });
+                if (groupeAllocataireSauvegarde != null) {
+                    //Convertion de l'objet en tableau
+                    groupeAllocataireSauvegarde = groupeAllocataireSauvegarde.split(",");
+                    $.each(groupeAllocataireSauvegarde, function (indice, valeur) {
+                        $("#groupeAllocataire option[value='" + valeur + "']").prop("selected", true);
+                    });
+                }
+
+                $('#divsaisieCodeOrgaMatricule').show();
+            }
+        });
+
+
+        function launchAppliAngular() {
+            //Suppression de la div saisie code Orga
+            var codeOrga = $('#codeOrga').val();
+            var matricule = $('#matricule').val();
+            var dateEnv = $('#dateEnv').val();
+            var modeDev = $('#checkboxModeDev').is(':checked');
+            var tabGroupesAllocataire = [];
+            $('#groupeAllocataire :selected').each(function (i, selected) {
+                tabGroupesAllocataire[i] = $(selected).val();
+            });
+
+            localStorage.setItem("codeOrga", codeOrga);
+            localStorage.setItem("matricule", matricule);
+            localStorage.setItem("dateEnv", dateEnv);
+            localStorage.setItem("groupeAllocataire", tabGroupesAllocataire);
+            sessionStorage.setItem("nePasRecharger", true);
+            // localStorage.setItem("modeDev", modeDev);
+
+            initModuleAngular(codeOrga, matricule, dateEnv, tabGroupesAllocataire);
+        }
+
+        function initModuleAngular(codeOrga, matricule, dateEnv, tabGroupesAllocataire) {
+            //Suppression de la div de saisie codeorga, etc ...
+            $('#divsaisieCodeOrgaMatricule').remove();
+            //Affichage du code organisme et du matricule et de la date env
+            $('.titre-cnaf #content1').append("Code organisme : " + codeOrga + "</br>Matricule : " + matricule + "</br>Date Env : " + dateEnv);
+            //Affichage des groupes allocataires
+            //Plusieurs groupes => Tableau
+            if (Array.isArray(tabGroupesAllocataire)) {
+                $('.titre-cnaf #content2').append("<p data-toggle=\"tooltip\" title=\"" + tabGroupesAllocataire.join() + "\">Groupes</p>");
+            }
+            //Un seul groupe
+            else if (tabGroupesAllocataire !== '') {
+                $('.titre-cnaf #content2').append("<p data-toggle=\"tooltip\" title=\"" + tabGroupesAllocataire + "\">Groupes</p>");
+            }
+            //Pas de groupe de sélectionné
+            else {
+                $('.titre-cnaf #content2').append("<p data-toggle=\"tooltip\" title=\"Pas de groupe\" >Groupes</p>");
+            }
+
+            // Pour afficher l'appli Angular initialisée avec les paramètres saisies, on va recharger la page pour recharger l'appli angular
+            localStorage.setItem("displayAngular", true);
+            window.location = window.location.origin;
+
+
+
+        }
+        function logout() {
+            localStorage.setItem("displayAngular", false);
+            //On retourne à la page de début
+            window.location = window.location.origin;
+        }
+
+        function createUrlJwt(mapForAngularAppli) {
+            var jwtUrl = "/wta-portletangular-web/s/GenerateTokenJwt/" + mapForAngularAppli.userConfig.codeOrga + '_' + mapForAngularAppli.userConfig.matricule;
+
+            if (mapForAngularAppli.userConfig.dateEnvCaffr !== "") {
+                jwtUrl = jwtUrl + '?dateEnvCaffr=' + mapForAngularAppli.userConfig.dateEnvCaffr;
+            }
+
+            if (mapForAngularAppli.userConfig.listGroups) {
+                jwtUrl = jwtUrl + '&listGroup=' + mapForAngularAppli.userConfig.listGroups;
+            }
+
+            //Génération d'un token avec un durée de vie à 24h
+            jwtUrl = jwtUrl + "&exp=24";
+            return jwtUrl;
+        }
+    </script>
+
+    <!-- *******************  -->
+    <!--         HEADER       -->
+    <!-- *******************  -->
+    <a class="sr-only" href="#theme-contenu-content-cnaf">Aller au contenu</a>
+    <header id="theme-header-cnaf" role="banner">
+        <div id="theme-header-links-cnaf">
+            <div class="container">
+                <div class="row">
+                    <form class="navbar-macaf-cnaf pull-right hidden" method="POST">
+                        <label for="ma-caf-code-postal">Ma Caf</label>
+                        <div class="input-group input-group-with-addon-cnaf">
+                            <input type="text" id="ma-caf-code-postal" name="zipcode" class="form-control" placeholder="Code postal"
+                                size="8" maxlength="5">
+                            <span class="input-group-addon">
+                                <input type="image" src="/icfstatiquesangularappli/dist/images/usager/pic-suite.png">
+                                <input type="image" src="/icfstatiquesangularappli/dist/images/pic-suite_gris.png"
+                                    class="hidden">
+                                <!-- Preload image -->
+                            </span>
+                        </div>
+                    </form>
+
+                    <div class="navbar-macaf-choix-cnaf pull-right">
+
+                        <a href="" title="Poste de dev">Poste de dev</a>
+                        <a href="#" class="btn-choix-cnaf" title="S'informer sur une autre Caf"><img class="pull-right"
+                                src="/icfstatiquesangularappli/dist/images/usager/pic_modifier.png"></a>
+                    </div>
+                    <!-- Modal pour le contraste -->
+                    <div id="myModalContraste" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="modalOptionAccessibilite">
+                      <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close-cnaf" data-dismiss="modal" aria-label="Fermer la popup"></button>
+                                  <div role="heading" aria-level="1" class="texte-medium text-primary" id="modalOptionAccessibilite">Option d'accessibilité</div>
+                              </div>
+                              <div class="modal-body">
+                                <div class="row">
+                                <div class="col-sm-6 ">
+                                  <fieldset>
+                                    <legend class="label-form-cnaf">Contraste: </legend>
+                                    <div class="form-group btn-group btn-group-justified" data-toggle="buttons" role="radiogroup">
+                                      <label class="btn btn-default" uib-btn-radio="'Standard'" for="standard" onclick="desactiveContrasteCnaf()">
+                                        <input type="radio" name="contraste" aria-label="Standard" class="sr-only" id="standard"  />
+                                        <span>Standard</span>
+                                      </label>
+                                      <label class="btn btn-default" uib-btn-radio="'Renforcé'" for="renforce" onclick="activeContrasteCnaf()">
+                                        <input type="radio" name="contraste" aria-label="Renforcé" class="sr-only" id="renforce"  />
+                                        <span>Renforcé</span>
+                                      </label>
+                                    </div>
+                                  </fieldset>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="navbar-links-access-cnaf pull-right" style="margin-top: 5px;">
+                      <span id="accessibilite" class="navbar-links-item-cnaf">
+                        <a class="popover-access-cnaf" style="text-decoration:none" href="javascript:void(0);" role="button" data-toggle="modal" tabindex="0" data-target="#myModalContraste">
+                          <img class="" alt="Option d'accessibilité" src="/icfstatiquesangularappli/dist/images/usager/pic-access.png">
+                          <span class="hidden-xs hidden-sm" style="vertical-align:middle">Accessibilité &nbsp;</span>
+                        </a>
+                      </span>
+                    </div>
+
+                    <div class="navbar-links-cnaf pull-left">
+                        <span class="navbar-links-item-cnaf active">
+                            <a class="text-uppercase" href="" title="Espace allocataires">Allocataires</a>
+                        </span>
+                        <span class="navbar-links-item-cnaf">
+                            <a class="text-uppercase" href="" title="Espace partenaires">Partenaires</a>
+                        </span>
+                        <span class="navbar-links-item-cnaf">
+                            <a class="text-uppercase" href="" title="Espace presse et institutionnel">
+                                <span class="hidden-xs">Presse et institutionnel</span>
+                                <span class="visible-xs">Presse/Instit.</span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="theme-header-content-cnaf" class="affix-top">
+            <div class="container">
+                <div class="row">
+
+                    <a class="btn btn-active-cnaf btn-burger-cnaf collapsed text-uppercase" data-toggle="collapse"
+                        data-target="#theme-menu-collapse-cnaf" aria-expanded="false" href="#" onclick="return false">
+                        <span class="picto picto-burger"></span>
+                        <span>Menu</span>
+                    </a>
+                    <a class="btn btn-domaine-cnaf" href="">
+                        <img alt="caf.fr" src="/icfstatiquesangularappli/dist/images/logo_caf-fr.png">
+                    </a>
+
+                    <div>
+                        <div class="separator"></div>
+                    </div>
+                    <div class="titre-cnaf">
+                        <div id="content1" style="float: left;width: 200px;"></div>
+                        <div id="content2" style="  float: right;width: 100%;margin-right: -200px;"></div>
+                    </div>
+                    <a class="btn text-uppercase" href="">
+                        <span class="picto picto-recherche"></span>
+                        <span class="hidden-xs">Rechercher</span>
+                    </a>
+
+                    <a id="btn-menu-moncompte-cnaf" class="btn text-uppercase collapsed" data-toggle="collapse"
+                        data-target="#theme-menu-moncompte-collapse-cnaf" aria-expanded="false" href="#" onclick="return false">
+                        <span class="picto picto-mon-compte"></span>
+                        <span class="hidden-xs">Mme XXX</span>
+                    </a>
+                    <a class="btn hidden-xs hidden-sm text-uppercase" ">
+                        <span class="picto picto-mon-compte-deconnexion" onclick="logout()"></span>
+                        Déconnexion
+                    </a>
+                    <a class="btn btn-logo-cnaf hidden-xs" href="">
+                        <img alt="Accueil caf.fr" src="/icfstatiquesangularappli/dist/images/logoCNAF.gif">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- *******************  -->
+    <!--     FIN - HEADER     -->
+    <!-- *******************  -->
+    <nav id="theme-menu-cnaf" role="navigation">
+        <div id="theme-menu-content-cnaf">
+            <div class="container">
+                <div id="theme-menu-collapse-cnaf" class="collapse navbar-collapse" aria-expanded="true" role="menu">
+
+                    <ul id="menu-burger-content-cnaf" class="nav navbar collapse in" aria-expanded="true" role="menu">
+                        <li class="dropdown"><a class="titre-menu-cnaf text-uppercase" href="#" title="Toutes les rubriques"
+                                onclick="return false" disabled="disabled">Toutes les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="dropdown-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-0" href="#" title="Actualités" onclick="return false">Actualités</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle active text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-1" href="#" title="Mes services en ligne" onclick="return false">Mes
+                                services en ligne</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-2" href="#" title="Droits et prestations" onclick="return false">Droits
+                                et prestations</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-3" href="#" title="Vies de famille" onclick="return false">Vies
+                                de famille</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-4" href="#" title="Aide" onclick="return false">Aide</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Ma Caf">Ma Caf</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Mon Compte">Mon Compte</a></li>
+                        <li role="separator" class="divider-light"></li>
+                    </ul>
+                    <ul id="sub-menu-content-0-0-0" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-0" href="#" title="Toutes les rubriques" onclick="return false">Toutes
+                                les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Actualités"><strong>Actualités</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+
+                    </ul>
+                    <ul id="sub-menu-content-0-0-1" class="nav dropdown-menu collapse in" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-1" href="#" title="Toutes les rubriques" onclick="return false">Toutes
+                                les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Mes services en ligne"><strong>Mes
+                                    services en ligne</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="Faire une simulation">Faire une simulation</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="active " href="" title="Faire une demande de prestation">Faire
+                                une demande de prestation</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                    <ul id="sub-menu-content-0-0-2" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-2" href="#" title="Toutes les rubriques" onclick="return false">Toutes
+                                les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Droits et prestations"><strong>Droits
+                                    et prestations</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle " data-toggle="collapse" data-target="#sub-menu-content-1-2-0"
+                                href="#" title="Connaître vos droits selon votre situation" onclick="return false">Connaître
+                                vos droits selon votre situation</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="dropdown-toggle " data-toggle="collapse" data-target="#sub-menu-content-1-2-1"
+                                href="#" title="S'informer sur les aides" onclick="return false">S'informer sur les
+                                aides</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                    <ul id="sub-menu-content-1-2-0" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-1-2-0" href="#" title="Droits et prestations" onclick="return false">Droits
+                                et prestations</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="" href="" title="Connaître vos droits selon votre situation"><strong>Connaître
+                                    vos droits selon votre situation</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+
+                    </ul>
+                    <ul id="sub-menu-content-1-2-1" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-1-2-1" href="#" title="Droits et prestations" onclick="return false">Droits
+                                et prestations</a></li>
+                        <li role="separator" class="divider"></li>
+
+                    </ul>
+                    <ul id="sub-menu-content-0-0-3" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-3" href="#" title="Toutes les rubriques" onclick="return false">Toutes
+                                les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Vies de famille"><strong>Vies de
+                                    famille</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+                    </ul>
+                    <ul id="sub-menu-content-0-0-4" class="nav dropdown-menu" aria-expanded="false" role="menu">
+                        <li class="dropdown"><a class="dropdown dropup-toggle text-uppercase" data-toggle="collapse"
+                                data-target="#sub-menu-content-0-0-4" href="#" title="Toutes les rubriques" onclick="return false">Toutes
+                                les rubriques</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown"><a class="text-uppercase" href="" title="Aide"><strong>Aide</strong></a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="actu essai">actu essai</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="Vidéos d'aide">Vidéos d'aide</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="Avant de venir à la Caf">Avant de venir à la
+                                Caf</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="Faire une démarche en ligne">Faire une démarche
+                                en ligne</a></li>
+                        <li role="separator" class="divider-light"></li>
+                        <li class="dropdown"><a class="" href="" title="Utiliser Mon Compte">Utiliser Mon Compte</a></li>
+                        <li role="separator" class="divider"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main id="theme-contenu-cnaf" class="icf-angular-cnaf page-accueil-cnaf" role="main">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 visible-lg" id="theme-contenu-menu-background-cnaf">
+                </div>
+                <div class="col-lg-3 visible-lg" id="theme-contenu-menu-wrapper-cnaf">
+                    <div>
+                        <ul id="sidebar-content-cnaf" class="nav navbar" role="tablist">
+                            <li role="separator" class="divider-light"></li>
+                            <li class="panel level0"><a class="collapsed text-uppercase" data-toggle="collapse"
+                                    data-target="#sub-sidebar-content-0-0-0" data-parent="#sidebar-content-cnaf"
+                                    aria-expanded="false" href="#" title="Actualités" onclick="return false"><span
+                                        class="picto picto-cadre picto-sidebar"></span>Actualités</a>
+                                <ul id="sub-sidebar-content-0-0-0" class="nav collapse" aria-expanded="false">
+                                    <li role="separator" class="divider-light"></li>
+                                    <li class="sidebar-item level1"><a class="" href="" title="Accueil Actualités">Accueil
+                                            Actualités</a></li>
+                                    <li role="separator" class="divider-light"></li>
+                                </ul>
+                            </li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="panel level0"><a class="active text-uppercase" data-toggle="collapse"
+                                    data-target="#sub-sidebar-content-0-0-1" data-parent="#sidebar-content-cnaf"
+                                    aria-expanded="true" href="#" title="Mes services en ligne" onclick="return false"><span
+                                        class="picto picto-cadre picto-sidebar"></span>Mes services en ligne</a>
+
+                            </li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="panel level0"><a class="collapsed text-uppercase" data-toggle="collapse"
+                                    data-target="#sub-sidebar-content-0-0-2" data-parent="#sidebar-content-cnaf"
+                                    aria-expanded="false" href="#" title="Droits et prestations" onclick="return false"><span
+                                        class="picto picto-cadre picto-sidebar"></span>Droits et prestations</a>
+
+                            </li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="panel level0"><a class="collapsed text-uppercase" data-toggle="collapse"
+                                    data-target="#sub-sidebar-content-0-0-3" data-parent="#sidebar-content-cnaf"
+                                    aria-expanded="false" href="#" title="Vies de famille" onclick="return false"><span
+                                        class="picto picto-cadre picto-sidebar"></span>Vies de famille</a>
+
+                            </li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="panel level0"><a class="collapsed text-uppercase" data-toggle="collapse"
+                                    data-target="#sub-sidebar-content-0-0-4" data-parent="#sidebar-content-cnaf"
+                                    aria-expanded="false" href="#" title="Aide" onclick="return false"><span class="picto picto-cadre picto-sidebar"></span>Aide</a>
+                            </li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="sidebar-item level0"><a class="text-uppercase" href="" title="Ma Caf">Ma Caf</a></li>
+                            <li role="separator" class="divider-light"></li>
+                            <li class="sidebar-item level0"><a class="text-uppercase" href="" title="Mon Compte">Mon
+                                    Compte</a></li>
+                            <li role="separator" class="divider-light"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-9" id="theme-contenu-content-wrapper-cnaf">
+                    <div id="theme-contenu-filariane-cnaf">
+                        <div class="container">
+                            <div class="row">
+                                <ol class="breadcrumb">
+                                    <li><a title="Accueil">Accueil</a></li>
+                                    <li><a title="Accueil">Mon compte</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="theme-contenu-content-cnaf">
+                        <h2 class="hidden sr-only">Contenu de la page</h2>
+                        <!-- Div application angular -->
+                        <div id="divAngular" hidden>
+                            <app-root></app-root>
+                        </div>
+                        <div id="divsaisieCodeOrgaMatricule" hidden>
+                            <div class="container">
+                                <div class="row conteneur-cnafTestAllocataire-cnaf">
+                                    <div class="col-sm-12 center-middle-block">
+
+                                        <form>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="label-form-cnaf control-label" for="codeOrga">Code
+                                                        organisme</label>
+                                                    <div class="form-group">
+                                                        <input type="text" id="codeOrga" name="codeOrga" class="form-control">
+                                                    </div>
+                                                    <label class="label-form-cnaf control-label" for="matricule">Matricule</label>
+                                                    <div class="form-group">
+                                                        <input type="text" id="matricule" name="matricule" class="form-control">
+                                                    </div>
+                                                    <label class="label-form-cnaf control-label" for="matricule">Date
+                                                        environnement</label>
+                                                    <div class="form-group">
+                                                        <input type="text" id="dateEnv" name="dateEnv" class="form-control">
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label class="label-form-cnaf control-label" for="groupeAllocataire">Groupe
+                                                            Allocataire</label>
+                                                        <select multiple class="form-control" id="groupeAllocataire"></select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <div style="margin-top:70px;margin-left:100px">
+                                                        <button type="button" id="btn-codeOrgaMatricule" onclick="launchAppliAngular()"
+                                                            class="btn btn-primary btn-codeOrgaMatricule">GO</button>
+                                                        <style>
+                                                            .btn-codeOrgaMatricule:hover {
+                                                                background-color: #1c4d92;
+                                                            }
+
+                                                            .btn-codeOrgaMatricule {
+                                                                color: #fff;
+                                                                width: 100px;
+                                                            }
+                                                        </style>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- *******************  -->
+    <!--        Footer        -->
+    <!-- *******************  -->
+    <footer id="theme-footer-cnaf" role="contentinfo">
+        <div id="theme-footer-content">
+            <div class="container">
+                <div class="row">
+                    <ul class="col-md-4 footer-list-link clearfix">
+                        <li class="col-sm-12">
+                            <a href="">allocataires</a>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">Actualités</a>
+                                </li>
+                                <li>
+                                    <a href="">Mes services en ligne</a>
+                                </li>
+                                <li>
+                                    <a href="">Droits et prestations</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">Vies de famille</a>
+                                </li>
+                                <li>
+                                    <a href="">Ma Caf</a>
+                                </li>
+                                <li>
+                                    <a href="">Mon Compte</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="col-md-4 footer-list-link clearfix">
+                        <li class="col-sm-12">
+                            <a href="">partenaires</a>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">Comment devenir partenaire de la Caf ?</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous êtes professionnel de la petite enfance</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous accompagnez la parentalité</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous êtes acteur du temps libre et des loisirs</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">Vous êtes acteur des solidarités et du soutien financier</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous êtes bailleur ou acteur du logement</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous êtes en contact avec les personnes handicapées</a>
+                                </li>
+                                <li>
+                                    <a href="">Vous êtes partenaires d'accueil</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="col-md-4 footer-list-link clearfix">
+                        <li class="col-sm-12">
+                            <a href="">presse-institutionnel</a>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">Qui sommes-nous ?</a>
+                                </li>
+                                <li>
+                                    <a href="">Presse</a>
+                                </li>
+                                <li>
+                                    <a href="">Etudes et statistiques</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="col-sm-6 col-md-12">
+                            <ul>
+                                <li>
+                                    <a href="">International</a>
+                                </li>
+                                <li>
+                                    <a href="">Marchés</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="theme-footer-copyright">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-sm-12">
+                        <a target="_blank" href="">Accessibilité</a>|
+                        <a target="_blank" href="">Mentions légales</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="icfstatiquesangularappli/dist/StatiquesCaffr/js/footerCnaf.min.js"></script>
+</body>
+<!-- FIN BODY -->
+
+</html>

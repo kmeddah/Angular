@@ -1,0 +1,91 @@
+<div>
+  <form [formGroup]="pageSaisieForm" novalidate autocomplete="off" styleClass="content-jsp-data-cnaf">
+
+    <!-- BTN OUI/NON - BENEFICIAIRE D'UNE BOURSE -->
+    <div class="row"  style="margin-bottom: 20px;">
+      <div class="col-sm-12">
+        <fieldset>
+          <legend class="label-form-cnaf">
+            {{personne.prenom | titlecase}} {{personne.nom | uppercase}} est toujours bénéficiaire d'une bourse étudiante sur critères sociaux :
+          </legend>
+          <div class="form-group btn-group btn-block" data-toggle="buttons" role="radiogroup" btnRadioGroup formControlName="isBeneficiaireBourse"
+          [ngClass]="{'has-error': pageSaisieForm.controls['isBeneficiaireBourse'].invalid && pageSaisieForm.controls['isBeneficiaireBourse'].touched}">
+            <div class="row">
+              <div class="col-xs-6 col-sm-2">
+                <label class="btn btn-default btn-block" btnRadio="oui" for="oui" (click)="enableOrganisme()">
+                  <input type="radio" name="isBeneficiaireBourse" class="sr-only" id="oui" value="oui" formControlName="isBeneficiaireBourse"/>
+                  <span>Oui</span>
+                </label>
+              </div>
+              <div class="col-xs-6 col-sm-2">
+                <label class="btn btn-default btn-block" btnRadio="non" for="non" (click)="disableOrganisme()">
+                  <input type="radio" name="isBeneficiaireBourse" class="sr-only" id="non" value="non" formControlName="isBeneficiaireBourse"/>
+                  <span>Non</span>
+                </label>
+              </div>
+            </div>
+            <div *ngIf="pageSaisieForm.controls['isBeneficiaireBourse'].errors" class="help-block">
+              <div *ngIf="pageSaisieForm.controls['isBeneficiaireBourse'].errors.required && pageSaisieForm.controls['isBeneficiaireBourse'].touched">Champ obligatoire</div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
+    <!-- NOM ET ADRESSE DE L'ORGANISME -->    
+    <div *ngIf="f.isBeneficiaireBourse.value === 'oui'">
+      <div class="row">        
+        <div class="col-sm-12">
+          <fieldset formGroupName="organismePayeur">
+            <legend class="label-form-cnaf" style="margin-bottom: -20px;">
+                Organisme payeur :
+            </legend>
+            <div class="row">
+              <div class="col-sm-6"
+                [ngClass]="{'has-error': f.isBeneficiaireBourse.value === 'oui' && f.organismePayeur.controls['nom'].invalid && f.organismePayeur.controls['nom'].touched}">
+                <label class="label-form-cnaf">Nom</label>
+                <input type="text" class="form-control" formControlName="nom"/>
+                <div *ngIf="f.organismePayeur.controls['nom'].errors" class="help-block">
+                  <div *ngIf="f.organismePayeur.controls['nom'].errors.required && f.organismePayeur.controls['nom'].touched">Champ obligatoire</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6"
+                [ngClass]="{'has-error': f.isBeneficiaireBourse.value === 'oui' &&  f.organismePayeur.controls['adresse'].invalid && f.organismePayeur.controls['adresse'].touched}">
+                <label class="label-form-cnaf">Adresse</label>
+                <textarea class="form-control" id="adresse" name="adresse" formControlName="adresse" rows="4"></textarea>
+                <div *ngIf="f.organismePayeur.controls['adresse'].errors" class="help-block">
+                  <div *ngIf="f.organismePayeur.controls['adresse'].errors.required && f.organismePayeur.controls['adresse'].touched">Champ obligatoire</div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Barre de boutons -->
+  <div class="row row-btn-cnaf">
+    <div class="col-sm-12 form-group">
+      <!--Popup modal d'Abandon -->
+      <app-modalquitter></app-modalquitter>
+      
+      <span *ngIf="index == 1">
+        <button type="submit" name="BCPrecedent" value="Précédent" title="Précédent" class="btn btn-form-cnaf btn-majeur-cnaf"
+        (click)="clickPrecedent()" style="pointer-events: all; cursor: pointer;">
+          Précédent
+        </button>
+      </span>
+     
+      <span class="pull-right">
+          <button type="submit" name="BCSuivant" value="Continuer" title="Continuer" class="btn btn-form-cnaf btn-majeur-cnaf"
+              (click)="clickSuivant()" style="pointer-events: all; cursor: pointer;">
+              Continuer
+          </button>
+      </span>
+    </div>
+  </div>
+
+</div>

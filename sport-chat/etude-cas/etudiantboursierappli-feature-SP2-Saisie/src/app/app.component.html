@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row conteneur-etudiantBoursier-cnaf">
+    <div class="col-sm-12 center-middle-block">
+      <div id="barre-etape-teleprocedure-cnaf" class="affix-top">
+        <ng-cnaf-barre-etape [steps]=steps [stepActive]=stepActive widthInvisible="40%"></ng-cnaf-barre-etape>
+      </div>
+      <div>
+        <router-outlet (activate)="onActivate($event)"></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

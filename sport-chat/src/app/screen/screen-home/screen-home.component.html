@@ -1,0 +1,9 @@
+
+<app-shared-navbar>{{ title }}</app-shared-navbar>
+
+<div class="container">
+  <br />
+  <app-user-connexion
+  (userConnection)="userConnectionHandler($event)">
+  </app-user-connexion>
+</div>

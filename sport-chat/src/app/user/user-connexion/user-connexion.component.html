@@ -1,0 +1,40 @@
+<div class="card" style="width: 18rem; margin: auto">
+  <img
+    src="https://images.squarespace-cdn.com/content/55a9a932e4b020360b6cfba8/1484852648084-KLNO6TTKPLNUX78UMEIE/Logo1.png?format=1500w&content-type=image%2Fpng"
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <h5 class="card-title">Connexion</h5>
+    <p class="card-text">Please connect.</p>
+    <form>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">😃</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          [(ngModel)]="user.username"
+          name="username"
+        />
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">🔒</span>
+        </div>
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="user.password"
+          name="password"
+        />
+      </div>
+    </form>
+
+    <a class="btn btn-primary btn-block"
+    (click)="requestConnection()">Enter</a>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+
+
+<div class="input-group mb-3">
+  <input
+  class="form-control"
+  placeholder="Your Text..."
+  [(ngModel)]="messageText"
+  (keydown.Enter)="send()">
+  <div class="input-group-append">
+    <button
+    class="btn btn-primary"
+    type="button"
+    (click)="send()">Send</button>
+  </div>
+</div>

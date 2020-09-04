@@ -1,0 +1,4 @@
+// Contenu du fichier jenkinsfile d'origine à prendre en compte dans les projets
+@Library('JenkinsSharedLibrary')_
+AssemblyJobFactory p = new AssemblyJobFactory(this)
+p.executeCurrentJob()
