@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "sport-chat"
+    }
+  },
+  "defaultProject": "sport-chat",
+  "cli": {
+    "analytics": "92f600ec-bfce-4ed4-b983-8e681a1cc27d"
+  }
 }
