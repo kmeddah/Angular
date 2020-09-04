@@ -1,3 +1,10 @@
 .card{
   padding:10px;
 }
+
+input.ng-invalid{
+  background-color: crimson;
+}
+input.ng-valid{
+  background-color: lightgreen;
+}

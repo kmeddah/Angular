@@ -16,12 +16,23 @@
           type="text"
           class="form-control"
           placeholder="Username"
+          required
+          #username="ngModel"
+          pattern="^\d*$"
           [(ngModel)]="user.username"
           name="username"
         />
       </div>
 
-      <div class="input-group mb-3">
+      <div class="alert alert-info" *ngIf="username.touched && username.invalid">
+        Username is only NUMERIC
+      </div>
+
+      valid : {{username.valid}} <br>
+      touched : {{username.touched}} <br>
+      pristine : {{username.pristine}} <br>
+
+      <div class="input-group mb-3" *ngIf="username.valid">
         <div class="input-group-prepend">
           <span class="input-group-text">🔒</span>
         </div>
@@ -35,7 +46,8 @@
       </div>
     </form>
 
-    <a class="btn btn-primary btn-block"
-    (click)="requestConnection()">Enter</a>
+    <button class="btn btn-primary btn-block"
+    [disabled]="username.invalid"
+    (click)="requestConnection()">Enter</button>
   </div>
 </div>
