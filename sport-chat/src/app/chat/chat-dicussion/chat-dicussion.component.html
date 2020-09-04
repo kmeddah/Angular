@@ -1,4 +1,5 @@
 <div class="bubble bubble-bottom-left"
+  [appZoom]="1.2"
   *ngFor="let msg of chatService.messages$ | async">
-  {{ msg.text }}
+  {{ msg.text | msg:'❤️' }}
 </div>

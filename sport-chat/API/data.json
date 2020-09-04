@@ -2,43 +2,13 @@
   "messages": [
     {
       "author": {
-        "username": "Name",
+        "username": "Renaud",
         "password": "Password",
         "id": 1,
         "avatar": ""
       },
-      "text": "This CSS is crap",
-      "id": 6
-    },
-    {
-      "author": {
-        "username": "Name",
-        "password": "Password",
-        "id": 1,
-        "avatar": ""
-      },
-      "text": "C'est cooooooOOOOOoOOOl",
-      "id": 7
-    },
-    {
-      "author": {
-        "username": "Name",
-        "password": "Password",
-        "id": 1,
-        "avatar": ""
-      },
-      "text": "Ca marche",
-      "id": 8
-    },
-    {
-      "author": {
-        "username": "Name",
-        "password": "Password",
-        "id": 1,
-        "avatar": ""
-      },
-      "text": "Super",
-      "id": 9
+      "text": "COVIDIS est ce un organisme de crédit ?",
+      "id": 1
     }
   ],
   "users": [

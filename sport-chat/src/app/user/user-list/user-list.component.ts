@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
+import { DispatcherService, COMMANDS } from 'src/app/services/dispatcher.service';
 
 @Component({
   selector: 'app-user-list',
@@ -9,13 +10,21 @@ import { ChatService } from 'src/app/services/chat.service';
 export class UserListComponent {
 
   constructor(
-    public chatService:ChatService
+    public store: DispatcherService
   ) {
 
 
     /* this.chatService.userList$.subscribe(
       data => console.table(data)
     ) */
+
+    this.store.dispatch(
+      {
+        command: COMMANDS.USER_GET_LIST,
+        data: null
+      }
+    )
+
   }
 
 

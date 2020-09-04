@@ -9,12 +9,13 @@
   <ul class="list-group">
     <li
       class="list-group-item"
-      *ngFor="let user of chatService.userList$ | async"
+      *ngFor="let user of store.data.users$ | async"
     >
       <img
         [src]="user.avatar"
         width="40"
         class="img-thumbnail rounded-circle"
+        [appZoom]="1.5"
       />
       {{ user.username }}
     </li>

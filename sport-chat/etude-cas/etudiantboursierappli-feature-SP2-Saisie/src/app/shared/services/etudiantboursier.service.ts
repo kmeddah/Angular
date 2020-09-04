@@ -4,6 +4,7 @@ import { InformationsDossier } from '../models/informations-dossier';
 import { Observable, of } from 'rxjs';
 
 const bouchonActif = true;
+
 const informationsDossierBouchon : InformationsDossier = {
     eligible: true,
     responsable: {
@@ -29,7 +30,7 @@ export class EtudiantBoursierService {
     private readonly informationsDossierUrl = '/api/etudiantboursierfront/v1/informationsdossier';
 
     constructor(private readonly http: HttpClient) {}
-    
+
     /* public getEligibilite() : Observable<Eligibilite>  {
         if (bouchonActif) {
             return of(eligibiliteBouchon);
@@ -43,7 +44,7 @@ export class EtudiantBoursierService {
             return of(informationsDossierBouchon);
         } else {
             // Traitement pour faciliter la manitpulation
-            return this.http.get<InformationsDossier>(`${this.informationsDossierUrl}`).pipe(); // .pipe() ???
+            return this.http.get<InformationsDossier>(`${this.informationsDossierUrl}`)//.pipe(); // .pipe() ???
         }
     }
 

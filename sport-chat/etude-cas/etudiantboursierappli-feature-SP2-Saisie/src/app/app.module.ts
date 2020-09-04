@@ -3,21 +3,24 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { APP_BASE_HREF } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+
+import { PopoverModule } from 'ngx-bootstrap/popover';
+import { ButtonsModule } from 'ngx-bootstrap/buttons';
+import { BsModalRef } from 'ngx-bootstrap/modal';
 
 import { NgCnafCommonsModule } from '@cnaf/ng-cnaf-commons';
 
+import { CctSaveSaisieService, CctSaveDataService, CctRecapitulatifModule } from '@cnaf/cnaf-commons-teleproc';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PopoverModule } from 'ngx-bootstrap/popover';
-import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { NoneligibiliteComponent } from './00-noneligibilite/noneligibilite.component';
 import { ModalaccueilComponent } from './00-modalaccueil/modalaccueil.component';
 import { SaisieComponent } from './01-saisie/saisie.component';
 import { RecapitulatifComponent } from './02-recapitulatif/recapitulatif.component';
 import { FinComponent } from './03-fin/fin.component';
-import { BsModalRef } from 'ngx-bootstrap/modal';
-import { HttpClientModule } from '@angular/common/http';
-import { CctSaveSaisieService, CctSaveDataService, CctRecapitulatifModule } from '@cnaf/cnaf-commons-teleproc';
+
 import { ModalquitterComponent } from './04-modalquitter/modalquitter.component';
 
 
@@ -43,8 +46,8 @@ import { ModalquitterComponent } from './04-modalquitter/modalquitter.component'
     ButtonsModule.forRoot(),
     CctRecapitulatifModule
   ],
-  entryComponents: [   
-    ModalaccueilComponent   
+  entryComponents: [
+    ModalaccueilComponent
   ],
   providers: [
     BsModalRef,
@@ -54,7 +57,8 @@ import { ModalquitterComponent } from './04-modalquitter/modalquitter.component'
     }],
   bootstrap: [AppComponent]
 })
-export class AppModule { 
+export class AppModule {
+
   constructor(private readonly cctSaveSaisieService: CctSaveSaisieService,
     private readonly cctSaveDataService: CctSaveDataService) {
     this.cctSaveSaisieService.cleanAll();
