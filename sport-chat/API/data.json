@@ -39,6 +39,76 @@
       },
       "text": "Super",
       "id": 9
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "Coucou",
+      "id": 10
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "test",
+      "id": 11
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "covidis test",
+      "id": 12
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "covidis",
+      "id": 13
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "covidis",
+      "id": 14
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "covidis",
+      "id": 15
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "covidis",
+      "id": 16
     }
   ],
   "users": [
