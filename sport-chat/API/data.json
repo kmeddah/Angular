@@ -1,0 +1,76 @@
+{
+  "messages": [
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "This CSS is crap",
+      "id": 6
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "C'est cooooooOOOOOoOOOl",
+      "id": 7
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "Ca marche",
+      "id": 8
+    },
+    {
+      "author": {
+        "username": "Name",
+        "password": "Password",
+        "id": 1,
+        "avatar": ""
+      },
+      "text": "Super",
+      "id": 9
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "Pascal",
+      "password": "orsys",
+      "avatar": "http://robohash.org/pascal"
+    },
+    {
+      "id": 2,
+      "username": "Khaled",
+      "password": "orsys",
+      "avatar": "http://robohash.org/khaled"
+    },
+    {
+      "id": 3,
+      "username": "Mickael",
+      "password": "orsys",
+      "avatar": "http://robohash.org/mickael"
+    },
+    {
+      "id": 4,
+      "username": "Daniel",
+      "password": "orsys",
+      "avatar": "http://robohash.org/daniel"
+    },
+    {
+      "id": 5,
+      "username": "Renaud",
+      "password": "orsys",
+      "avatar": "http://robohash.org/renaud"
+    }
+  ]
+}

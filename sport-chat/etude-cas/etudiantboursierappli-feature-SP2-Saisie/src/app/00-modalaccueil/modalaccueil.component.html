@@ -1,0 +1,42 @@
+<!-- Modal HTML -->
+<div class="modal-header">
+    <button type="button" class="close-cnaf" data-dismiss="modal" aria-label="Fermer la popup"
+        (click)="close()"></button>
+    <div role="heading" aria-level="1" class="texte-medium text-primary" id="monTitreModal">A savoir avant de commencer</div>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-12">
+
+      <!-- Durée estimée -->
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-2">
+            <img src="/icfstatiquesangularappli/dist/images/usager/pic-duree.png" class="center-block" alt="">
+        </div>
+        <div class="col-sm-10">
+            <label class="label-form-cnaf" tabindex="0">Cette déclaration comprend 3 étapes et dure en moyenne 2 minutes</label>
+        </div>
+      </div>
+            
+      <!-- Avant de commencer -->
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-2">
+            <img src="/icfstatiquesangularappli/dist/images/usager/pic-avnt_telep.png" class="center-block"
+                alt="">
+        </div>
+        <div class="col-sm-10">
+            <label class="label-form-cnaf" tabindex="0">
+              Si vous et/ou votre conjoint êtes toujours bénéficiaire(s) d'une bourse,
+              vous avez besoin des coordonnées du ou des organismes qui la verse(nt).
+            </label>
+        </div>
+      </div>
+
+      <!-- barrre de boutons -->
+      <button type="button" class="btn btn-form-cnaf btn-secondaire-cnaf" data-dismiss="modal" (click)="close()">Quitter</button>
+      <div class="pull-right">
+        <button type="button" class="btn btn-form-cnaf btn-majeur-cnaf" (click)="confirm()">Commencer</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<div>
+  <form [formGroup]="pageRecapForm" novalidate autocomplete="off">
+
+    <div class="row texte-clair-cnaf" style="margin-top: 20px;">
+      <p id="infos-recap" class="texte-clair-cnaf">
+        <span class="texte-bold">
+            Pour valider et transmettre votre déclaration, cliquer sur&nbsp;«&nbsp;Valider&nbsp;».
+        </span>
+        <br/>
+        <span>
+            Pour modifier votre saisie, cliquer sur le&nbsp;
+            <img
+                alt="Modifier"
+                src="/icfstatiquesangularappli/dist/images/usager/pic_modifier.png"
+                style="position:absolute; margin-top:-10px"/>
+        </span>
+        <br/>
+        <span>Pour abandonner, cliquer sur&nbsp;«&nbsp;Quitter&nbsp;».</span>
+      </p>
+    </div>
+
+
+    <!-- Block recap Responsable -->
+    <div *ngIf="dataStorageResp" class="row texte-clair-cnaf" style="margin-top: 20px;">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="text-primary text-uppercase">
+            <span>{{informationsDossier.responsable.prenom}} {{informationsDossier.responsable.nom}}
+              <a style="cursor:pointer" (click)="clickRetourPageSaisieResponsable()" title="Modifier">
+                <img alt="Modifier" src="/icfstatiquesangularappli/dist/images/usager/pic_modifier.png" 
+                  style="position:absolute; margin-top:-10px"/>
+              </a>
+            </span>
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <span>
+            {{informationsDossier.responsable.prenom | titlecase}} {{informationsDossier.responsable.nom | titlecase}}
+            <span *ngIf="dataStorageResp.isBeneficiaireBourse === 'oui'">
+              <strong>est toujours</strong> 
+            </span>
+            <span *ngIf="dataStorageResp.isBeneficiaireBourse === 'non'">
+              <strong>n'est plus</strong>
+            </span>
+            bénéficiaire d'une bourse étudiante sur critères sociaux
+          </span>
+        </div>
+      </div>
+      <div *ngIf="dataStorageResp.isBeneficiaireBourse === 'oui'" class="row" style="margin-top: 30px;">
+        <div class="col-sm-12">
+          <span class="texte-clair-cnaf">Nom et adresse de l'organisme payeur :</span><br/>
+          <span class="text-primary" style="margin-left: 10px;">
+            {{dataStorageResp.organismePayeur.nom}}
+          </span><br/>
+          <span class="text-primary" style="margin-left: 10px;">
+            {{dataStorageResp.organismePayeur.adresse}}
+          </span><br/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block recap Conjoint -->
+    <div *ngIf="dataStorageConjoint" class="row texte-clair-cnaf" style="margin-top: 20px;">
+      <div class="row">
+        <div class="col-sm-12">
+          <h4 class="text-primary text-uppercase">
+            <span>{{informationsDossier.conjoint.prenom | titlecase}} {{informationsDossier.conjoint.nom | titlecase}}
+              <a style="cursor:pointer" (click)="clickRetourPageSaisieConjoint()" title="Modifier">
+                <img alt="Modifier" src="/icfstatiquesangularappli/dist/images/usager/pic_modifier.png"
+                  style="position:absolute; margin-top:-10px"/>
+              </a>
+            </span>
+          </h4>
+        </div>
+      </div>
+      <div class="col-sm-12">
+        <div class="row">
+          <span>
+            {{informationsDossier.conjoint.prenom | titlecase}} {{informationsDossier.conjoint.nom | titlecase}}
+            <span *ngIf="dataStorageConjoint.isBeneficiaireBourse === 'oui'">
+              <strong>est toujours</strong> 
+            </span>
+            <span *ngIf="dataStorageConjoint.isBeneficiaireBourse === 'non'">
+              <strong>n'est plus</strong>
+            </span>
+            bénéficiaire d'une bourse étudiante sur critères sociaux
+          </span>
+        </div>
+      </div>
+      <div *ngIf="dataStorageConjoint.isBeneficiaireBourse === 'oui'" class="row" style="margin-top: 30px;">
+        <div class="col-sm-12">
+          <span class="texte-clair-cnaf">Nom et adresse de l'organisme payeur :</span><br/>
+          <span class="text-primary" style="margin-left: 10px;">
+            {{dataStorageConjoint.organismePayeur.nom}}
+          </span><br/>
+          <span class="text-primary" style="margin-left: 10px;">
+            {{dataStorageConjoint.organismePayeur.adresse}}
+          </span><br/>
+        </div>
+      </div>
+    </div>
+
+    <!--Composant Conditions d'utilisation Récap -->
+    <cct-checkbox-conditions formControlName="checkConditions" [isSubmitted]="isSubmitted"></cct-checkbox-conditions>
+  </form>
+
+  <!-- Barre de boutons -->
+  <div class="row row-btn-cnaf">
+    <div class="col-sm-12 form-group">
+      <!--Popup modal d'Abandon -->
+      <app-modalquitter></app-modalquitter>
+
+      <span class="pull-right">
+          <button id="btn-valider" type="submit" name="BCValider" value="Valider" title="Valider" class="btn btn-form-cnaf btn-majeur-cnaf"
+              (click)="clickValider()" style="pointer-events: all; cursor: pointer;">
+              Valider
+          </button>
+      </span>
+    </div>
+  </div>
+</div>

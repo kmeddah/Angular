@@ -1,0 +1,4 @@
+<div class="bubble bubble-bottom-left"
+  *ngFor="let msg of chatService.messages$ | async">
+  {{ msg.text }}
+</div>

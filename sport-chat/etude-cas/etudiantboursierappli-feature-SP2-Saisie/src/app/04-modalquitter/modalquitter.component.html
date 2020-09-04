@@ -1,0 +1,28 @@
+<button type="submit" name="BCQuitter" value="Quitter" title="Quitter" 
+    (click)="openModal(template)" class="btn btn-form-cnaf btn-majeur-cnaf">
+    Quitter
+</button>
+     
+<ng-template #template aria-labelledby="monTitreModal" aria-hidden="true">
+  <!-- Modal HTML -->
+  <div class="modal-header">
+    <button type="button" class="close-cnaf" data-dismiss="modal" aria-label="Fermer la popup"
+        (click)="close()"></button>
+    <div role="heading" aria-level="1" class="texte-medium text-primary" id="monTitreModal">Abandon</div>
+  </div>
+  <div class="modal-body">
+    <div class="row ">
+        <div class="col-sm-12">
+            <p>Vous souhaitez abandonner votre démarche en ligne.</p>
+            <p>Si vous confirmez, les données que vous avez saisies seront perdues.</p>
+            <button type="button" class="btn btn-form-cnaf btn-secondaire-cnaf" data-dismiss="modal" (click)="close()">Annuler</button>
+            <div class="pull-right">
+                <a href="/redirect/s/Redirect?page=monCompte"
+                alt="Retour vers mon compte" class="btn btn-form-cnaf btn-majeur-cnaf align-middle-cnaf pull-right">
+                    Confirmer
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+</ng-template>
